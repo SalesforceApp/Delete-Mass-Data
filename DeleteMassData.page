@@ -1,0 +1,83 @@
+<apex:page controller="DeleteMassRecordsController" tabStyle="Delete_Mass_Data__tab">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            changeRange('{!JSENCODE(FieldType)}');
+            $( ".fromDate" ).datepicker();
+            $( ".toDate" ).datepicker();
+        });
+        function changeRange(val) {
+            if(val == 'All Time') {
+                jQuery('.fromDateDiv').css('display', 'none');
+                jQuery('.toDateDiv').css('display', 'none');
+            } else {
+                jQuery('.fromDateDiv').css('display', 'block');
+                jQuery('.toDateDiv').css('display', 'block');
+            }
+        }
+        function checkObjects() {
+            var objectName = jQuery('.objectNames').val();
+            if(objectName == 'NONE') {
+                alert('Please select a Object.');
+                return false;
+            } else {
+                if(confirm('Are you sure?')) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    </script>
+    <apex:sectionHeader title="Delete Mass Records"/>
+    <div class="note" style="border: 1px solid #8E9CBD;margin: 10px 0 10px 0;min-height: 75px;height: auto !important;">
+        <div class="noteTitle" style="color: #333;font-size: 100%;font-weight: bold;margin: 0 2px;">Note: If some records could not be deleted</div>
+        <div class="noteBody" style="margin: 0 8px 8px 10px;">
+            <img align="left" src="/img/help/helpNote_icon.gif" style="max-width: 100%;height: auto;width: auto;"/>
+            <span><br /></span>
+            <span class="ph" style="margin-left:10px">1. Because these records are associated with the other records.</span><br/>
+            <span class="ph" style="margin-left:10px">2. Because you do not have access to the records restricting the delete.</span>
+        </div>
+    </div>
+    <apex:Form >
+        <apex:pageMessages />
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Delete" action="{!deleteRecords}" onclick="return checkObjects();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Select a Object">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Select Object"/>
+                    <apex:selectList value="{!ObjectName}" size="1" styleClass="objectNames">
+                        <apex:selectOptions value="{!Objects}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <div class="pbSubheader brandTertiaryBgr tertiaryPalette"><h3>Create Date Filter</h3></div>
+            <table style="padding-left:130px" class="labelCol vfLabelColTextWrap  first  last ">
+                <tr>
+                    <td>
+                        Range &nbsp;
+                        <apex:selectList size="1" value="{!FieldType}" onchange="changeRange(this.value)">
+                            <apex:selectOption itemLabel="All Time" itemValue="All Time" />
+                            <apex:selectOption itemLabel="Custom" itemValue="Custom" />
+                        </apex:selectList>
+                    </td>
+                    <td style="padding-left: 20px;">
+                        <div class="fromDateDiv" style="display:none">
+                            From &nbsp;<apex:inputText value="{!FromDate}" styleClass="fromDate"/>
+                        </div>
+                    </td>
+                    <td style="padding-left: 20px">
+                        <div class="toDateDiv" style="display:none">
+                            To &nbsp;<apex:inputText value="{!ToDate}" styleClass="toDate"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </apex:pageBlock>
+        
+    </apex:Form>
+</apex:page>
