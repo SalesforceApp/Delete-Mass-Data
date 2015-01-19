@@ -18,5 +18,5 @@
 
 *Please donate $25 to our team if this package is useful for you. My Paypal is samba.gao@hotmail.com.*
 
-Thanks,
+ Thanks,
  Samba
