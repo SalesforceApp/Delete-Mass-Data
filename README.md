@@ -13,8 +13,8 @@
  https://login.salesforce.com/packaging/installPackage.apexp?p0=04t90000000BAtp
 
 # Screenshots
-* ![ScreenShot](https://www.dropbox.com/s/3iy5062r9livwkb/Main.png?dl=0)
-* ![ScreenShot](https://www.dropbox.com/s/hqytbtex2grc6e9/2.png?dl=0)
+* ![ScreenShot](https://github.com/SalesforceApp/Delete-Mass-Data/blob/master/imgs/Main.png)
+* ![ScreenShot](https://github.com/SalesforceApp/Delete-Mass-Data/blob/master/imgs/2.png)
 
 *Please donate $25 to our team if this package is useful for you. My Paypal is samba.gao@hotmail.com.*
 
