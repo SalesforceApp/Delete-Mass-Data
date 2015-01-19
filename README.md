@@ -1,7 +1,7 @@
 # Delete Mass Data
  If you want to delete mass data for the object. Please install our package to your salesforce Org.
  
-# How to use the package: 
+# How to use the package
  Step 1: Installation the package in your salesforce Org. 
  Step 2: Choose Delete Mass Data App. 
  Step 3: Open Delete Mass Data Tab. 
